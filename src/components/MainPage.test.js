@@ -33,6 +33,26 @@ it('should filter robots', () => {
         isPending: false
     }
     const wrapper2 = shallow(<MainPage {...mockProps2} />)
-    expect(wrapper.instance().filterRobots()).toEqual([]);
     expect(wrapper2.instance().filterRobots()).toEqual([]);
+});
+
+it('should filter robots2', () => {
+    const mockProps3 = {
+        onRequestRobots: jest.fn(),
+        robots: [
+            {
+                id: 1,
+                name: 'aaa',
+                email: 'a@gmail.com'
+            }
+        ],
+        searchField: 'a',
+        isPending: false
+    }
+    const wrapper3 = shallow(<MainPage {...mockProps3} />)
+    expect(wrapper3.instance().filterRobots()).toEqual([{
+        id: 1,
+        name: 'aaa',
+        email: 'a@gmail.com'
+    }]);
 });
